@@ -39,10 +39,11 @@ public class Square {
     }
 
     public void setVrcholy(float[] vrcholy) {
+
         this.vrcholy = vrcholy;
         GL33.glBindVertexArray(squareVaoId);
         GL33.glBindBuffer(GL33.GL_ARRAY_BUFFER, squareVboId);
-        fb = fb.clear().put(Main.pos).flip();
+        fb = fb.clear().put(vrcholy).flip();
         GL33.glBufferData(GL33.GL_ARRAY_BUFFER, fb, GL33.GL_STATIC_DRAW);
         GL33.glVertexAttribPointer(0, 3, GL33.GL_FLOAT, false, 0, 0);
         GL33.glEnableVertexAttribArray(0);
