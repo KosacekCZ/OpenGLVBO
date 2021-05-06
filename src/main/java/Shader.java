@@ -7,7 +7,7 @@ public class Shader {
             "void main()\n" +
             "{\n" +
             "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n" +
-            "   outColor = color;\n" +
+            "   outColor = oColor;\n" +
             "}";
 
     private static final String fragmentShaderSource = "#version 330 core\n" +
