@@ -7,20 +7,20 @@ import org.lwjgl.system.MemoryUtil;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-public class Player extends Square{
+public class Player{
     private static int playerVaoId;
     private static int playerVboId;
     private static int playerEboId;
     private static int colorId;
     private static int vertexColorLocation;
 
-    private static final int[] indexy =
+    private static final int[] indices =
             {
                     0, 1, 3,
                     1, 2, 3
             };
 
-    private static float[] playerPos = {
+    private static final float[] vertices = {
             -1.0f, -1.0f, 0.0f,
             -0.8f, -1.0f, 0.0f,
             -0.8f, -0.8f, 0.0f,
@@ -40,7 +40,7 @@ public class Player extends Square{
             .identity()
             .translate(0.25f, 0.25f, 0.25f);
 
-    private static FloatBuffer matrixFloatBuffer = BufferUtils.createFloatBuffer(16);
+    private static final FloatBuffer matrixFloatBuffer = BufferUtils.createFloatBuffer(16);
 
 
 
@@ -61,8 +61,8 @@ public class Player extends Square{
 
         // Tell OpenGL we are currently writing to this buffer (eboId)
         GL33.glBindBuffer(GL33.GL_ELEMENT_ARRAY_BUFFER, playerEboId);
-        IntBuffer ib = BufferUtils.createIntBuffer(indexy.length)
-                .put(indexy)
+        IntBuffer ib = BufferUtils.createIntBuffer(indices.length)
+                .put(indices)
                 .flip();
         GL33.glBufferData(GL33.GL_ELEMENT_ARRAY_BUFFER, ib, GL33.GL_STATIC_DRAW);
 
@@ -72,8 +72,8 @@ public class Player extends Square{
         // Tell OpenGL we are currently writing to this buffer (vboId)
         GL33.glBindBuffer(GL33.GL_ARRAY_BUFFER, playerVboId);
 
-        FloatBuffer fb = BufferUtils.createFloatBuffer(playerPos.length)
-                .put(playerPos)
+        FloatBuffer fb = BufferUtils.createFloatBuffer(vertices.length)
+                .put(vertices)
                 .flip();
 
         // Send the buffer (positions) to the GPU

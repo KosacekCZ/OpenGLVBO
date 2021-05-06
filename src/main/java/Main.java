@@ -138,38 +138,6 @@ public class Main {
             pozice.add(sqr.getSquareVaoId());
         }
 
-        /*float x = -1.0f;
-        float y = 1.0f;
-        int at = 0;
-
-        for (int i = 0; i < a; i++) {
-            for (int j = 0; j < a; j++) {
-                if (key.charAt(at) == '1') {
-
-                    float[] pos = {
-
-                            x + 2.0f / (float) a, y, 0.0f,
-                            x + 2.0f / (float) a, y - 2.0f / (float) a, 0.0f,
-                            x, y - 2.0f / (float) a, 0.0f,
-                            x, y, 0.0f,
-                    };
-
-                    Square sqr = new Square();
-                    sqr.setVrcholy(pos);
-
-                    pozice.add(sqr.getSquareVaoId());
-
-                    x += 2.0f / (float) a;
-                } else {
-                    x += 2.0f / (float) a;
-                }
-                at++;
-            }
-            x = -1.0f;
-            y -= 2.0f / (float) a;
-        }
-        */
-
 
         // init player
         Player.init(window);
