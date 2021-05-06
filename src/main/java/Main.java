@@ -171,6 +171,7 @@ public class Main {
         */
 
 
+        // init player
         Player.init(window);
 
         while (!GLFW.glfwWindowShouldClose(window)) {
@@ -182,6 +183,7 @@ public class Main {
             GL33.glClearColor(0.1f, 0.15f, 0.15f, 0.1f);
             GL33.glClear(GL33.GL_COLOR_BUFFER_BIT);
 
+            // player movement věc
             Player.render(window);
             Player.update(window);
 
