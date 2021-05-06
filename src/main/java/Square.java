@@ -1,8 +1,9 @@
+import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL33;
-
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -13,7 +14,8 @@ public class Square {
     private final int[] indexy =
             {
                     0, 1, 3,
-                    1, 2, 3};
+                    1, 2, 3
+            };
 
     private int squareVaoId;
     private int squareVboId;
@@ -21,7 +23,6 @@ public class Square {
 
     private FloatBuffer fb = BufferUtils.createFloatBuffer(vrcholy.length);
     private IntBuffer ib = BufferUtils.createIntBuffer(indexy.length);
-
 
     public Square() {
         squareVaoId = GL33.glGenVertexArrays();
@@ -60,4 +61,5 @@ public class Square {
     public int getIndexy() {
         return indexy.length;
     }
+
 }

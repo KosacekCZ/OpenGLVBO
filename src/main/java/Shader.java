@@ -2,13 +2,16 @@ import org.lwjgl.opengl.GL33;
 
 public class Shader {
     private static final String vertexShaderSource = "#version 330 core\n" +
+            "out vec3 outColor;\n" +
             "layout (location = 0) in vec3 aPos;\n" +
             "void main()\n" +
             "{\n" +
-            " gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n" +
+            "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n" +
+            "   outColor = color;\n" +
             "}";
 
     private static final String fragmentShaderSource = "#version 330 core\n" +
+            "in vec3 outColor;\n" +
             "out vec4 FragColor;\n" +
             "void main()\n" +
             "{\n" +
