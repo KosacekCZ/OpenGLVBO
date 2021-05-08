@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Main {
 
-    /*public String getKey() {
+     /*public String getKey() {
         return key;
     }
 
@@ -95,6 +95,8 @@ public class Main {
         GLFW.glfwSetFramebufferSizeCallback(window, (win, w, h) -> GL33.glViewport(0, 0, w, h));
         Shader.initShaders();
 
+        Player.init(window);
+
         ArrayList<Integer> pozice = new ArrayList<Integer>();
 
         // Indices transform and float-ready edit
@@ -140,7 +142,7 @@ public class Main {
 
 
         // init player
-        Player.init(window);
+
 
         while (!GLFW.glfwWindowShouldClose(window)) {
             GL33.glUseProgram(Shader.shaderProgramId);
@@ -159,7 +161,6 @@ public class Main {
                 GL33.glBindVertexArray(integer);
                 GL33.glDrawElements(GL33.GL_TRIANGLES, 6, GL33.GL_UNSIGNED_INT, 0);
             }
-
 
             GLFW.glfwSwapBuffers(window);
             GLFW.glfwPollEvents();

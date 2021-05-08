@@ -4,6 +4,7 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL33;
+
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -41,6 +42,12 @@ public class Square {
 
         GL33.glBindVertexArray(squareVaoId);
 
+        GL33.glBindBuffer(GL33.GL_ELEMENT_ARRAY_BUFFER, squareEboId);
+        ib = ib
+                .put(indexy)
+                .flip();
+        GL33.glBufferData(GL33.GL_ELEMENT_ARRAY_BUFFER, ib, GL33.GL_STATIC_DRAW);
+
         GL33.glBindBuffer(GL33.GL_ARRAY_BUFFER, colorId);
 
         FloatBuffer cb = BufferUtils.createFloatBuffer(color.length)
@@ -50,14 +57,6 @@ public class Square {
         GL33.glBufferData(GL33.GL_ARRAY_BUFFER, cb, GL33.GL_STATIC_DRAW);
         GL33.glVertexAttribPointer(1, 3, GL33.GL_FLOAT, false, 0, 0);
         GL33.glEnableVertexAttribArray(1);
-
-        GL33.glBindBuffer(GL33.GL_ELEMENT_ARRAY_BUFFER, squareEboId);
-                ib = ib
-                .put(indexy)
-                .flip();
-        GL33.glBufferData(GL33.GL_ELEMENT_ARRAY_BUFFER, ib, GL33.GL_STATIC_DRAW);
-
-
     }
 
     public float[] getVrcholy() {

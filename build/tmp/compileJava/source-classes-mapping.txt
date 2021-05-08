@@ -1,8 +1,8 @@
-Player.java
- Player
-Shader.java
- Shader
 Square.java
  Square
+Shader.java
+ Shader
+Player.java
+ Player
 Main.java
  Main

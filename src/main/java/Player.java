@@ -7,7 +7,7 @@ import org.lwjgl.system.MemoryUtil;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-public class Player{
+public class Player {
     private static int playerVaoId;
     private static int playerVboId;
     private static int playerEboId;
@@ -41,10 +41,6 @@ public class Player{
             .translate(0.25f, 0.25f, 0.25f);
 
     private static final FloatBuffer matrixFloatBuffer = BufferUtils.createFloatBuffer(16);
-
-
-
-
 
 
     public static void init(long window) {
@@ -94,31 +90,25 @@ public class Player{
         GL33.glVertexAttribPointer(1, 3, GL33.GL_FLOAT, false, 0, 0);
         GL33.glEnableVertexAttribArray(1);
 
-        vertexColorLocation = GL33.glGetUniformLocation(Shader.shaderProgramId, "color");
         GL33.glUseProgram(Shader.shaderProgramId);
-        GL33.glUniform4f(vertexColorLocation, 1.0f, 0.0f, 0.0f, 1.0f);
-
-
 
         matrix.get(matrixFloatBuffer);
         GL33.glUniformMatrix4fv(uniformMatrixLocation, false, matrixFloatBuffer);
+
 
         // Clear the buffer from the memory (it's saved now on the GPU, no need for it here)
         MemoryUtil.memFree(fb);
         MemoryUtil.memFree(cb);
 
-        matrix.get(matrixFloatBuffer);
-        GL33.glUniformMatrix4fv(uniformMatrixLocation, false, matrixFloatBuffer);
-
 
     }
 
     public static void render(long window) {
-        GL33.glBindVertexArray(Player.playerVaoId);
-        GL33.glDrawElements(GL33.GL_TRIANGLES, 6, GL33.GL_UNSIGNED_INT, 0);
-
         matrix.get(matrixFloatBuffer);
         GL33.glUniformMatrix4fv(uniformMatrixLocation, false, matrixFloatBuffer);
+
+        GL33.glBindVertexArray(Player.playerVaoId);
+        GL33.glDrawElements(GL33.GL_TRIANGLES, 6, GL33.GL_UNSIGNED_INT, 0);
 
 
     }
